@@ -9,16 +9,14 @@ List<string> words = [
 ];
 */
 
-List<Word> words = [
-  new Word("hus", "house", "swedish", "english"),
-  new Word("hem", "home", "swedish", "english"),
-  new Word("stor", "big", "swedish", "english"),
-  new Word("stor", "large", "swedish", "english"),
-  new Word("stor", "huge", "swedish", "english"),
-  new Word("stor", "volymous", "swedish", "english")
-  // stor => big, large
-];
+List<Word> words = [];
 
+// fyll listan med ord från disk (wordlists)
+foreach (string line in File.ReadAllLines("./wordlists/swedish-english.csv"))
+{
+  string[] wordPair = line.Split(",");
+  words.Add(new Word(wordPair[0], wordPair[1], "swedish", "english"));
+}
 
 // referera till ett ord ur vår array (hem på engelska):
 //Console.WriteLine(words[1].WordOut);
